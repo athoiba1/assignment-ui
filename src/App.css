@@ -1,0 +1,217 @@
+/* Import the exact font used in the design */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* Reset for accurate sizing */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colors sampled for maximum accuracy from the Figma Inspector */
+  --bg-color: #242629;         
+  --card-bg-color: #363C43;     /* Confirmed Figma Hex */
+  --card-shadow: rgba(0, 0, 0, 0.4);
+  
+  /* TEXT COLORS (The 969696 gray is used for the main bio text) */
+  --text-color-primary: #ebebeb; /* Main text, close to white */
+  --text-color-secondary: #969696; /* Confirmed main body text color */
+  --accent-color: #f7a944;      
+  
+  /* BUTTONS & CONTAINERS */
+  --button-dark-bg: #404245;    
+  --tab-container-bg: #383a3f;  
+  --tab-active-bg: #e0e0e0;     
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif; 
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* --- Main Layout: Desktop (Above 768px) --- */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  padding: 48px; /* Large overall margin */
+  gap: 48px;
+}
+
+/* Left Half: Empty space */
+.left-empty-space {
+  flex: 1; 
+  padding-right: 16px; 
+}
+.left-empty-space p {
+  color: var(--text-color-secondary);
+  font-size: 13px; 
+  padding-left: 8px;
+}
+
+/* Right Half: Widgets Stacked and Aligned */
+.right-widgets-column {
+  /* CRITICAL: Set the fixed width based on the Figma selection W: 720 */
+  min-width: 720px; 
+  max-width: 720px;
+  flex-grow: 0; 
+  
+  display: flex;
+  flex-direction: column;
+  gap: 32px; 
+}
+
+/* -------------------- Card Base Styles -------------------- */
+.widget-card {
+  background-color: var(--card-bg-color);
+  border-radius: 12px; 
+  padding: 24px; /* 24px internal padding (the unselected area around content) */
+  box-shadow: 0 4px 10px var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(1px); 
+  width: 100%;
+}
+
+/* --- Profile Card (Tabs) --- */
+.tab-buttons-group {
+  display: flex;
+  gap: 4px; 
+  background-color: var(--tab-container-bg);
+  padding: 5px;
+  border-radius: 10px;
+  /* Tab Bar Size W 597 x H 49 */
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  color: var(--text-color-secondary);
+  padding: 8px 16px; 
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 15px; 
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tab-button.active {
+  background-color: var(--tab-active-bg); 
+  color: var(--bg-color); 
+  font-weight: 700; 
+}
+
+.card-content-text {
+  padding-top: 20px; 
+}
+.card-content-text p {
+  line-height: 1.5;
+  margin: 0;
+  padding-bottom: 16px;
+  font-size: 20px; /* Confirmed Figma font size */
+}
+.card-content-text .bio-text {
+  color: var(--text-color-secondary); /* Applied the confirmed color here */
+}
+
+/* --- Gallery Card (Buttons & Grid) --- */
+
+.gallery-header {
+  margin-bottom: 24px; 
+}
+
+.gallery-button {
+  background-color: var(--button-dark-bg); 
+  padding: 8px 18px; 
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.add-image-button {
+  background: none;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  /* CRITICAL: Dimensions W 131.32 x H 46 */
+  width: 131px;
+  height: 46px; 
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.navigation-arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.arrow-btn {
+  background-color: var(--button-dark-bg);
+  color: var(--text-color-primary);
+  border: none;
+  /* CRITICAL: Dimensions W 45 x H 45 */
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+}
+.arrow-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Image Grid Styling */
+.image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.05fr; 
+  gap: 8px; 
+  padding-top: 16px;
+}
+
+.image-wrapper {
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #444; 
+  aspect-ratio: 1 / 1; 
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05); 
+}
+
+/* If using CSS placeholders, keep this */
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: linear-gradient(to right, #444 32%, #555 33%, #555 66%, #444 67%);
+}
+
+.small-image-placeholder {
+    display: none; 
+}
+
+
+/* -------------------- Responsiveness (Mobile/Tablet) -------------------- */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .right-widgets-column {
+    /* Revert width constraints for responsiveness */
+    min-width: auto;
+    max-width: 100%;
+    flex-grow: 1;
+  }
+  
+  .widget-card {
+      padding: 16px;
+  }
+
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}

@@ -1,0 +1,227 @@
+/* --- 1. Root Variables (The "Design System") --- */
+:root {
+  --app-bg: #121212;
+  --panel-bg: #202020;
+  --panel-bg-lighter: #2a2a2a;
+  --accent-bg: #323232;
+  --text-light: #f0f0f0;
+  --text-faded: #a0a0a0;
+  --text-darker: #707070;
+  --border-color: #3e3e3e;
+  --accent-blue: #4a90e2; /* Blue from "Share prototype" button */
+  --radius: 8px;
+  --panel-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* --- 2. Global Resets & Body --- */
+body {
+  background-color: var(--app-bg);
+  color: var(--text-light);
+  /* Use the "Inter" font (make sure to import it in public/index.html) */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px; /* Base font size from image */
+}
+
+/* --- 3. Main Layout & Icon Sidebar --- */
+.app-wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.icon-sidebar {
+  width: 60px; /* Fixed width for the icon bar */
+  background-color: var(--panel-bg);
+  padding: 1.5rem 0; /* Vertical padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem; /* Space between icons */
+  font-size: 1.25rem; /* Icon size */
+  color: var(--text-darker); /* Icons are the darker gray */
+  border-right: 1px solid var(--border-color);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Allow content to scroll */
+}
+
+/* --- 4. Top Navigation Bar --- */
+.top-nav {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem; /* Precise padding */
+}
+
+.top-nav .navbar-brand {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-light) !important;
+}
+
+.top-nav .btn-primary {
+  background-color: var(--accent-blue);
+  border: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+}
+
+.top-nav .nav-icon {
+  font-size: 1.25rem;
+  color: var(--text-darker);
+}
+
+.top-nav .user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--accent-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--text-faded);
+}
+
+/* --- 5. Content Panels (Left & Right) --- */
+.content-area {
+  padding: 1.5rem;
+}
+
+.panel {
+  background-color: var(--panel-bg);
+  border-radius: var(--radius);
+  border: none;
+  box-shadow: var(--panel-shadow);
+}
+
+/* Left Panel */
+.task-panel {
+  padding: 1.5rem;
+  min-height: 85vh; /* Match image height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.task-panel-header {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+.task-list {
+  padding-left: 1.25rem; /* ol default padding */
+  list-style: decimal;
+}
+
+.task-list li {
+  color: var(--text-faded);
+  line-height: 1.7; /* Generous line height */
+  padding-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.panel-footer {
+  text-align: right;
+  color: var(--text-faded);
+  font-size: 0.8rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* --- 6. Right Panel Cards --- */
+.profile-tabs .nav-link {
+  color: var(--text-faded) !important;
+  font-weight: 500;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+}
+
+.profile-tabs .nav-link.active {
+  background-color: var(--accent-bg) !important;
+  color: var(--text-light) !important;
+  font-weight: 600;
+}
+
+.profile-card-body {
+  color: var(--text-faded);
+  line-height: 1.6;
+  font-size: 0.9rem;
+  padding: 0.5rem 1.25rem 1.25rem 1.25rem; /* Match visual padding */
+}
+
+.gallery-header {
+  border-bottom: none !important;
+}
+
+.gallery-header .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.gallery-header .btn-outline-secondary {
+  color: var(--text-faded);
+  border-color: var(--text-faded);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+.gallery-header .btn-outline-secondary:hover {
+  background-color: var(--accent-bg);
+  color: var(--text-light);
+}
+
+.gallery-header .btn-secondary {
+  background-color: var(--accent-bg);
+  border: none;
+  color: var(--text-light);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-body {
+  padding: 0 1.25rem 1.25rem 1.25rem;
+}
+
+/* This placeholder mimics the building photo */
+.img-placeholder {
+  background-color: var(--panel-bg-lighter);
+  min-height: 100px;
+  border-radius: 6px;
+  /* Using a real image for the placeholder effect */
+  background-image: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6;
+}
+
+/* --- 7. Restart Button --- */
+.restart-button {
+  position: fixed;
+  bottom: 1rem;
+  right: 1.5rem;
+  background-color: var(--panel-bg-lighter);
+  color: var(--text-faded);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  z-index: 1000;
+}
